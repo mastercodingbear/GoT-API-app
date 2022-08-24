@@ -1,0 +1,15 @@
+.table-container {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+tr>th {
+  background-color: aquamarine;
+}
+
+tr>td {
+  border: 1px solid grey;
+}
