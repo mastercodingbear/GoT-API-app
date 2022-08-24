@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/CharacterTable.css';
 import { Character } from '../state/types';
@@ -12,8 +12,8 @@ const CharacterTable: React.FC = () => {
   const queryParams = new URLSearchParams(useLocation().search);
   const queryPage = parseInt(queryParams.get('page') ?? '1');
   const queryPageSize = parseInt(queryParams.get('pagesize') ?? '25');
-  const queryCulture = parseInt(queryParams.get('culture') ?? '');
-  const queryGender = parseInt(queryParams.get('gender') ?? 'Any');
+  const queryGender = queryParams.get('gender') ?? 'Any';
+  const queryCulture = queryParams.get('culture') ?? '';
   let navigate = useNavigate();
 
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -21,8 +21,8 @@ const CharacterTable: React.FC = () => {
   const [pageSize, setPageSize] = useState<number>(queryPageSize);
   const [totalPage, setTotalPage] = useState<number>(1);
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [filterGender, setFilterGender] = useState<string>('');
-  const [filterCulture, setFilterCulture] = useState<string>('');
+  const [filterGender, setFilterGender] = useState<string>(queryGender);
+  const [filterCulture, setFilterCulture] = useState<string>(queryCulture);
 
   useEffect(() => {
     getCharacters(filterCulture, filterGender);
