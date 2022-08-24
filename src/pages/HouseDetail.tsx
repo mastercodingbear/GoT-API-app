@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import '../styles/HouseDetail.css';
 import { House } from '../state/types';
 
 const HouseDetail: React.FC = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const houseId = params.houseId;
 
   const [houseDetail, setHouseDetail] = useState<House>();
+  const [isLoading, setLoading] = useState<boolean>(true);
+
   const getHouseDetails = async () => {
+    setLoading(true);
     const data = await fetch(
       `https://anapioficeandfire.com/api/houses/${houseId}`
     ).then(async (res) => await res.json());
-    console.log(data);
+    setLoading(false);
     setHouseDetail(data);
   };
   useEffect(() => {
@@ -19,16 +24,52 @@ const HouseDetail: React.FC = () => {
   }, []);
   return (
     <React.Fragment>
-      <h1>House Detail</h1>
-      <h5>Name: {houseDetail?.name}</h5>
-      <h5>Region: {houseDetail?.region}</h5>
-      <h5>Coat of Arms: {houseDetail?.coatOfArms}</h5>
-      <h5>Words: {houseDetail?.words}</h5>
-      <h5>Titles: {houseDetail?.titles.join(', ')}</h5>
-      <h5>Seats: {houseDetail?.seats.join(', ')}</h5>
-      <h5>Has died out: {houseDetail?.diedOut}</h5>
-      <h5>Has overlord: {houseDetail?.overlord}</h5>
-      <h5>Number of Cadet Branches: {houseDetail?.cadetBranches}</h5>
+      <button className="go-back" onClick={() => navigate(-1)}>
+        Go back
+      </button>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          <h1>House Detail</h1>
+          <div className="field">
+            <strong>Name: </strong>
+            {houseDetail?.name}
+          </div>
+          <div className="field">
+            <strong>Region: </strong>
+            {houseDetail?.region}
+          </div>
+          <div className="field">
+            <strong>Coat of Arms: </strong>
+            {houseDetail?.coatOfArms}
+          </div>
+          <div className="field">
+            <strong>Words: </strong>
+            {houseDetail?.words}
+          </div>
+          <div className="field">
+            <strong>Titles: </strong>
+            {houseDetail?.titles.join(', ')}
+          </div>
+          <div className="field">
+            <strong>Seats: </strong>
+            {houseDetail?.seats.join(', ')}
+          </div>
+          <div className="field">
+            <strong>Has died out: </strong>
+            {houseDetail?.diedOut}
+          </div>
+          <div className="field">
+            <strong>Has overlord: </strong>
+            {houseDetail?.overlord}
+          </div>
+          <div className="field">
+            <strong>Number of Cadet Branches: </strong>
+            {houseDetail?.cadetBranches}
+          </div>
+        </div>
+      )}
     </React.Fragment>
   );
 };

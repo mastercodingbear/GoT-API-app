@@ -1,0 +1,8 @@
+.field {
+  font-size: 1rem;
+}
+
+.go-back {
+  justify-content: end;
+  display: flex;
+}
