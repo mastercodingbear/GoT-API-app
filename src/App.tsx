@@ -7,7 +7,7 @@ import PageNotFound from './pages/PageNotFound';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Got-API-app">
       <div className="App">
         <main className="container">
           <Routes>
