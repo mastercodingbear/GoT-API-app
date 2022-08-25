@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/GoT-API-app/static/css/main.7d02a978.css",
+    "main.js": "/GoT-API-app/static/js/main.0c5a74c4.js",
+    "static/js/787.2e9e9bed.chunk.js": "/GoT-API-app/static/js/787.2e9e9bed.chunk.js",
+    "index.html": "/GoT-API-app/index.html",
+    "main.7d02a978.css.map": "/GoT-API-app/static/css/main.7d02a978.css.map",
+    "main.0c5a74c4.js.map": "/GoT-API-app/static/js/main.0c5a74c4.js.map",
+    "787.2e9e9bed.chunk.js.map": "/GoT-API-app/static/js/787.2e9e9bed.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7d02a978.css",
+    "static/js/main.0c5a74c4.js"
+  ]
+}
