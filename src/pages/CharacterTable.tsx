@@ -7,11 +7,12 @@ import Pagination from '../components/Pagination';
 import Loading from '../components/Loading';
 import FilterGender from '../components/FilterFields/FilterGender';
 import FilterCulture from '../components/FilterFields/FilterCulture';
+import useDebounce from '../hook/useDebounce';
 
 const CharacterTable: React.FC = () => {
   const queryParams = new URLSearchParams(useLocation().search);
   const queryPage = parseInt(queryParams.get('page') ?? '1');
-  const queryPageSize = parseInt(queryParams.get('pagesize') ?? '25');
+  const queryPageSize = parseInt(queryParams.get('pageSize') ?? '25');
   const queryGender = queryParams.get('gender') ?? 'Any';
   const queryCulture = queryParams.get('culture') ?? '';
   let navigate = useNavigate();
@@ -24,9 +25,20 @@ const CharacterTable: React.FC = () => {
   const [filterGender, setFilterGender] = useState<string>(queryGender);
   const [filterCulture, setFilterCulture] = useState<string>(queryCulture);
 
+  const debouncedCultureTerm: string = useDebounce<string>(filterCulture, 300);
+
   useEffect(() => {
     getCharacters(filterCulture, filterGender);
-  }, [page, pageSize, filterCulture, filterGender]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page, pageSize]);
+
+  // Effect for API call
+  useEffect(() => {
+    setLoading(true);
+    getCharacters(debouncedCultureTerm, filterGender);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedCultureTerm]);
 
   const getCharacters = async (culture: string = '', gender: string = '') => {
     try {
@@ -71,7 +83,6 @@ const CharacterTable: React.FC = () => {
   };
 
   const handleChangeCulture = (culture: string) => {
-    console.log(culture);
     setFilterCulture(culture);
     setPage(1);
   };
