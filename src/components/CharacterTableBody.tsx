@@ -1,6 +1,7 @@
 import React from 'react';
 import { Character } from '../state/types';
 import CharacterTableRow from './CharacterTableRow';
+import NoResult from './NoResult';
 
 type Props = {
   characters: Character[];
@@ -9,9 +10,13 @@ type Props = {
 const CharacterTableBody: React.FC<Props> = ({ characters }) => {
   return (
     <React.Fragment>
-      {characters.map((row, index) => (
-        <CharacterTableRow character={row} key={`character-${index}`} />
-      ))}
+      {characters.length > 0 ? (
+        characters.map((row, index) => (
+          <CharacterTableRow character={row} key={`character-${index}`} />
+        ))
+      ) : (
+        <NoResult />
+      )}
     </React.Fragment>
   );
 };
