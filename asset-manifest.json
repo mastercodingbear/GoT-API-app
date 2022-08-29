@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/GoT-API-app/static/css/main.7d02a978.css",
-    "main.js": "/GoT-API-app/static/js/main.1bbc687f.js",
+    "main.css": "/GoT-API-app/static/css/main.da491b98.css",
+    "main.js": "/GoT-API-app/static/js/main.0f819b8a.js",
     "static/js/787.2e9e9bed.chunk.js": "/GoT-API-app/static/js/787.2e9e9bed.chunk.js",
     "index.html": "/GoT-API-app/index.html",
-    "main.7d02a978.css.map": "/GoT-API-app/static/css/main.7d02a978.css.map",
-    "main.1bbc687f.js.map": "/GoT-API-app/static/js/main.1bbc687f.js.map",
+    "main.da491b98.css.map": "/GoT-API-app/static/css/main.da491b98.css.map",
+    "main.0f819b8a.js.map": "/GoT-API-app/static/js/main.0f819b8a.js.map",
     "787.2e9e9bed.chunk.js.map": "/GoT-API-app/static/js/787.2e9e9bed.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d02a978.css",
-    "static/js/main.1bbc687f.js"
+    "static/css/main.da491b98.css",
+    "static/js/main.0f819b8a.js"
   ]
 }
