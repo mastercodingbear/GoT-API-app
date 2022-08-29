@@ -21,7 +21,9 @@ const HouseDetail: React.FC = () => {
   };
   useEffect(() => {
     getHouseDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <React.Fragment>
       <button className="go-back" onClick={() => navigate(-1)}>
@@ -33,7 +35,7 @@ const HouseDetail: React.FC = () => {
         <div>
           <h1>House Detail</h1>
           <div className="field">
-            <strong>Name: </strong>
+            <strong>Name of the House: </strong>
             {houseDetail?.name}
           </div>
           <div className="field">
@@ -66,7 +68,7 @@ const HouseDetail: React.FC = () => {
           </div>
           <div className="field">
             <strong>Number of Cadet Branches: </strong>
-            {houseDetail?.cadetBranches}
+            {houseDetail?.cadetBranches.length}
           </div>
         </div>
       )}
