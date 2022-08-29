@@ -4,7 +4,9 @@ import './Loading.css';
 const Loading: React.FC = () => {
   return (
     <tr>
-      <td className="loading">Loading...</td>
+      <td className="loading" colSpan={5}>
+        Loading...
+      </td>
     </tr>
   );
 };

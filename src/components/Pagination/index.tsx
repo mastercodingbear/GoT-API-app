@@ -50,14 +50,22 @@ const Pagination: React.FC<Props> = ({
         <button className="page-link" onClick={moveToFirst}>
           First
         </button>
-        <button className="page-link" onClick={moveToPrev}>
+        <button
+          className="page-link"
+          onClick={moveToPrev}
+          disabled={page === 1}
+        >
           Prev
         </button>
-        <button className="page-link" onClick={moveToNext}>
+        <button
+          className="page-link"
+          onClick={moveToNext}
+          disabled={page === totalPage}
+        >
           Next
         </button>
         <button className="page-link" onClick={moveToLast}>
-          Last Page
+          Last
         </button>
       </div>
     </div>
