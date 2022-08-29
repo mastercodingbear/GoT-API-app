@@ -30,7 +30,7 @@ const CharacterTable: React.FC = () => {
   useEffect(() => {
     getCharacters(filterCulture, filterGender);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, pageSize]);
+  }, [page, pageSize, filterGender]);
 
   // Effect for API call
   useEffect(() => {
