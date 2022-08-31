@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import '../styles/HouseDetail.css';
-import { House } from '../state/types';
+import React, { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import '../styles/HouseDetail.css'
+import { House } from '../state/types'
 
 const HouseDetail: React.FC = () => {
-  const params = useParams();
-  const navigate = useNavigate();
-  const houseId = params.houseId;
+  const params = useParams()
+  const navigate = useNavigate()
+  const houseId = params.houseId ?? '1'
 
-  const [houseDetail, setHouseDetail] = useState<House>();
-  const [isLoading, setLoading] = useState<boolean>(true);
+  const [houseDetail, setHouseDetail] = useState<House>()
+  const [isLoading, setLoading] = useState<boolean>(true)
 
-  const getHouseDetails = async () => {
-    setLoading(true);
+  const getHouseDetails = async (): Promise<void> => {
+    setLoading(true)
     const data = await fetch(
       `https://anapioficeandfire.com/api/houses/${houseId}`
-    ).then(async (res) => await res.json());
-    setLoading(false);
-    setHouseDetail(data);
-  };
+    ).then(async (res) => await res.json())
+    setLoading(false)
+    setHouseDetail(data)
+  }
+
   useEffect(() => {
-    getHouseDetails();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    void getHouseDetails()
+  }, [])
 
   return (
     <React.Fragment>
@@ -73,7 +73,7 @@ const HouseDetail: React.FC = () => {
         </div>
       )}
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default HouseDetail;
+export default HouseDetail

@@ -1,11 +1,11 @@
-import React from 'react';
-import { Character } from '../state/types';
-import CharacterTableRow from './CharacterTableRow';
-import NoResult from './NoResult';
+import React from 'react'
+import { Character } from '../state/types'
+import CharacterTableRow from './CharacterTableRow'
+import NoResult from './NoResult'
 
-type Props = {
-  characters: Character[];
-};
+interface Props {
+  characters: Character[]
+}
 
 const CharacterTableBody: React.FC<Props> = ({ characters }) => {
   return (
@@ -18,7 +18,7 @@ const CharacterTableBody: React.FC<Props> = ({ characters }) => {
         <NoResult />
       )}
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default CharacterTableBody;
+export default CharacterTableBody

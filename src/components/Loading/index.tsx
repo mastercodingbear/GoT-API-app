@@ -1,5 +1,5 @@
-import React from 'react';
-import './Loading.css';
+import React from 'react'
+import './Loading.css'
 
 const Loading: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const Loading: React.FC = () => {
         Loading...
       </td>
     </tr>
-  );
-};
+  )
+}
 
-export default Loading;
+export default Loading

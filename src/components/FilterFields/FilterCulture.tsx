@@ -1,10 +1,10 @@
-import React from 'react';
-import './Filter.css';
+import React from 'react'
+import './Filter.css'
 
-type Props = {
-  culture: string;
-  onFilterChanged: (culture: string) => void;
-};
+interface Props {
+  culture: string
+  onFilterChanged: (culture: string) => void
+}
 
 const FilterCulture: React.FC<Props> = ({ culture, onFilterChanged }) => {
   return (
@@ -16,7 +16,7 @@ const FilterCulture: React.FC<Props> = ({ culture, onFilterChanged }) => {
         onChange={(e) => onFilterChanged(e.target.value)}
       />
     </div>
-  );
-};
+  )
+}
 
-export default FilterCulture;
+export default FilterCulture

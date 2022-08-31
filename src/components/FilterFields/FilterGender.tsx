@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-type Props = {
-  gender: string;
-  onFilterChanged: (gender: string) => void;
-};
+interface Props {
+  gender: string
+  onFilterChanged: (gender: string) => void
+}
 
 const FilterGender: React.FC<Props> = ({ gender, onFilterChanged }) => {
   return (
@@ -15,7 +15,7 @@ const FilterGender: React.FC<Props> = ({ gender, onFilterChanged }) => {
         <option>Female</option>
       </select>
     </React.Fragment>
-  );
-};
+  )
+}
 
-export default FilterGender;
+export default FilterGender

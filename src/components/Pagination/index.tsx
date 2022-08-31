@@ -1,35 +1,35 @@
-import React from 'react';
-import './Pagination.css';
+import React from 'react'
+import './Pagination.css'
 
-type Props = {
-  page: number;
-  pageSize: number;
-  totalPage: number;
-  onPageChange: (page: number) => void;
-  onPageSizeChange: (pageSize: number) => void;
-};
+interface Props {
+  page: number
+  pageSize: number
+  totalPage: number
+  onPageChange: (page: number) => void
+  onPageSizeChange: (pageSize: number) => void
+}
 
 const Pagination: React.FC<Props> = ({
   page,
   pageSize,
   totalPage,
   onPageChange,
-  onPageSizeChange,
+  onPageSizeChange
 }) => {
-  const moveToFirst = () => {
-    onPageChange(1);
-  };
-  const moveToLast = () => {
-    onPageChange(totalPage);
-  };
-  const moveToNext = () => {
-    const nextPage = page + 1 <= totalPage ? page + 1 : totalPage;
-    onPageChange(nextPage);
-  };
-  const moveToPrev = () => {
-    const prevPage = page - 1 >= 1 ? page - 1 : 1;
-    onPageChange(prevPage);
-  };
+  const moveToFirst = (): void => {
+    onPageChange(1)
+  }
+  const moveToLast = (): void => {
+    onPageChange(totalPage)
+  }
+  const moveToNext = (): void => {
+    const nextPage = page + 1 <= totalPage ? page + 1 : totalPage
+    onPageChange(nextPage)
+  }
+  const moveToPrev = (): void => {
+    const prevPage = page - 1 >= 1 ? page - 1 : 1
+    onPageChange(prevPage)
+  }
 
   return (
     <div className="pagination-container">
@@ -69,7 +69,7 @@ const Pagination: React.FC<Props> = ({
         </button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination
