@@ -11,8 +11,8 @@ const AllegianceList: React.FC<Props> = ({ allegiances }) => {
   }
   return (
     <React.Fragment>
-      {allegiances.length > 0 ? allegiances.map((allegiance, index) => (
-            <div key={`allegiance-${index}`}>
+      {allegiances.length > 0 ? allegiances.map((allegiance) => (
+            <div key={`allegiance-${getHouseId(allegiance)}`}>
               <Link to={`/houses/${getHouseId(allegiance)}`}>
                 {getHouseId(allegiance)}
               </Link>
