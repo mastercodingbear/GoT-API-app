@@ -1,5 +1,5 @@
 import React from 'react'
-import { Character } from '../state/types'
+import { Character } from '../types'
 import AllegianceList from './AllegianceList'
 
 interface Props {
