@@ -8,8 +8,8 @@ import PageNotFound from './pages/PageNotFound'
 const App: React.FC = () => {
   return (
     <BrowserRouter basename="/GoT-API-app">
-      <div className="App">
-        <main className="container">
+      <div className="text-center dark:bg-slate-900 h-screen">
+        <main className="w-full">
           <Routes>
             <Route path="/" element={<CharacterTable />} />
             <Route path="/characters" element={<CharacterTable />} />

@@ -1,5 +1,5 @@
 import React from 'react'
-import './Pagination.css'
+import Button from './Button'
 
 interface Props {
   page: number
@@ -32,41 +32,31 @@ const Pagination: React.FC<Props> = ({
   }
 
   return (
-    <div className="pagination-container">
-      <div className="pagination-info">
-        {page} page of {totalPage} pages
-      </div>
-      <div className="pagination">
-        Rows per page:{' '}
+    <div className="flex flex-row justify-between">
+      <span className="text-slate-700 dark:text-slate-400">
+        <b>{page}</b> page of <b>{totalPage}</b> pages
+      </span>
+      <div className="flex flex-row gap-x-2 items-center">
+        <span className="text-slate-700 dark:text-slate-400 font-semibold">
+          Rows per page:{' '}
+        </span>
         <select
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
           value={pageSize}
-          className="pagesize-select"
           onChange={(e) => onPageSizeChange(parseInt(e.target.value))}
         >
           <option>10</option>
           <option>25</option>
           <option>50</option>
         </select>
-        <button className="page-link" onClick={moveToFirst}>
-          First
-        </button>
-        <button
-          className="page-link"
-          onClick={moveToPrev}
-          disabled={page === 1}
-        >
-          Prev
-        </button>
-        <button
-          className="page-link"
+        <Button onClick={moveToFirst} text="First" />
+        <Button onClick={moveToPrev} disabled={page === 1} text="Prev" />
+        <Button
           onClick={moveToNext}
           disabled={page === totalPage}
-        >
-          Next
-        </button>
-        <button className="page-link" onClick={moveToLast}>
-          Last
-        </button>
+          text="Next"
+        />
+        <Button onClick={moveToLast} text="Last" />
       </div>
     </div>
   )

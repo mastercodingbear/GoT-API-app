@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import '../styles/CharacterTable.css'
 import { Character } from '../state/types'
 import CharacterTableBody from '../components/CharacterTableBody'
 import Pagination from '../components/Pagination'
 import Loading from '../components/Loading'
-import FilterGender from '../components/FilterFields/FilterGender'
-import FilterCulture from '../components/FilterFields/FilterCulture'
+import FilterGender from '../components/FilterGender'
+import FilterCulture from '../components/FilterCulture'
 import useDebounce from '../hook/useDebounce'
 
 const CharacterTable: React.FC = () => {
@@ -99,8 +98,10 @@ const CharacterTable: React.FC = () => {
 
   return (
     <React.Fragment>
-      <h1>Character Table</h1>
-      <div className="table-container">
+      <h3 className="text-3xl font-bold dark:text-slate-200">
+        Character Table
+      </h3>
+      <div className="w-full">
         <Pagination
           page={page}
           pageSize={pageSize}
@@ -108,7 +109,7 @@ const CharacterTable: React.FC = () => {
           onPageChange={handleChangePage}
           onPageSizeChange={handleChangePageSize}
         />
-        <div className="filter-container">
+        <div className="flex justify-between my-4">
           <FilterGender
             gender={filterGender}
             onFilterChanged={handleChangeGender}
@@ -118,29 +119,36 @@ const CharacterTable: React.FC = () => {
             onFilterChanged={handleChangeCulture}
           />
         </div>
-        <table>
-          <thead>
+        <table className="w-full border-collapse border border-slate-500">
+          <thead className="bg-slate-50 dark:bg-slate-700">
             <tr>
-              <th scope="col" style={{ width: '40%' }}>
+              <th className="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left w-4/12">
                 Character
               </th>
-              <th scope="col" style={{ width: '20%' }}>
+              <th className="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left w-2/12">
                 Alive
               </th>
-              <th scope="col" style={{ width: '10%' }}>
+              <th className="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left w-2/12">
                 Gender
               </th>
-              <th scope="col" style={{ width: '10%' }}>
+              <th className="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left w-2/12">
                 Culture
               </th>
-              <th scope="col" style={{ width: '20%' }}>
+              <th className="border border-slate-300 dark:border-slate-600 font-semibold p-4 text-slate-900 dark:text-slate-200 text-left w-2/12">
                 Allegiances
               </th>
             </tr>
           </thead>
-          <tbody className="table-body">
+          <tbody>
             {isLoading ? (
-              <Loading />
+              <tr>
+                <td
+                  className="border-slate-300 dark:border-slate-700 py-4"
+                  colSpan={5}
+                >
+                  <Loading />
+                </td>
+              </tr>
             ) : (
               <CharacterTableBody characters={characters} />
             )}

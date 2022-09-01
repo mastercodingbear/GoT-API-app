@@ -12,11 +12,13 @@ const AllegianceList: React.FC<Props> = ({ allegiances }) => {
   return (
     <React.Fragment>
       {allegiances.length > 0 ? allegiances.map((allegiance) => (
-            <div key={`allegiance-${getHouseId(allegiance)}`}>
-              <Link to={`/houses/${getHouseId(allegiance)}`}>
-                {getHouseId(allegiance)}
-              </Link>
-            </div>
+            <Link
+              className="text-sky-400"
+              to={`/houses/${getHouseId(allegiance)}`}
+              key={`allegiance-${getHouseId(allegiance)}`}
+            >
+              {getHouseId(allegiance)}
+            </Link>
       )) : 'No allegiances'}
     </React.Fragment>
   )

@@ -8,8 +8,8 @@ interface Props {
 
 const CharacterTableRow: React.FC<Props> = ({ character }) => {
   const convertNameToAlias = (): string => {
-    const name = character.name !== '' ? character.name + ', ' : ''
     const alias = character?.aliases ?? []
+    const name = character.name !== '' ? character.name + ', ' : ''
     return `${name}${alias.join(', ')}`
   }
 
@@ -41,11 +41,19 @@ const CharacterTableRow: React.FC<Props> = ({ character }) => {
   return (
     <React.Fragment>
       <tr>
-        <td>{convertNameToAlias()}</td>
-        <td>{alive}</td>
-        <td>{character.gender}</td>
-        <td>{character.culture !== '' || 'Unknown'}</td>
-        <td>
+        <td className="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+          {convertNameToAlias()}
+        </td>
+        <td className="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+          {alive}
+        </td>
+        <td className="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+          {character.gender}
+        </td>
+        <td className="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
+          {character.culture !== '' ? character.culture : 'Unknown'}
+        </td>
+        <td className="border border-slate-300 dark:border-slate-700 p-4 text-slate-500 dark:text-slate-400">
           <AllegianceList allegiances={character.allegiances} />
         </td>
       </tr>
