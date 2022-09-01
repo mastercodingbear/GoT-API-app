@@ -20,18 +20,24 @@ const CharacterTableRow: React.FC<Props> = ({ character }) => {
     alive = 'No'
   }
   if (character.born !== '' && character.died !== '') {
-    const bornYears =
+    let bornYears =
       character.born
         .match(/\d+/g)
         ?.map((num) => parseInt(num))
         .sort((a, b) => a - b)
         .pop() ?? 0
-    const diedYears =
+    let diedYears =
       character.died
         .match(/\d+/g)
         ?.map((num) => parseInt(num))
         .sort((a, b) => a - b)
         .pop() ?? 0
+    if (character.born.includes('BC')) {
+      bornYears = -bornYears
+    }
+    if (character.died.includes('BC')) {
+      diedYears = -bornYears
+    }
     const age = diedYears - bornYears
     alive = `No, died at ${age} years old`
   } else if (character.born !== '' && character.died === '') {

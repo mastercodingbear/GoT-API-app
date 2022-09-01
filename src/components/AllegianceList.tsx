@@ -13,7 +13,7 @@ const AllegianceList: React.FC<Props> = ({ allegiances }) => {
     <React.Fragment>
       {allegiances.length > 0 ? allegiances.map((allegiance) => (
             <Link
-              className="text-sky-400"
+              className="text-sky-400 block"
               to={`/houses/${getHouseId(allegiance)}`}
               key={`allegiance-${getHouseId(allegiance)}`}
             >
