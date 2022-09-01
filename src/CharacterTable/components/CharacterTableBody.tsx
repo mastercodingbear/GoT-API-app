@@ -1,7 +1,7 @@
 import React from 'react'
-import { Character } from '../state/types'
+import { Character } from '../types'
 import CharacterTableRow from './CharacterTableRow'
-import NoResult from './NoResult'
+import NoResult from '../../Shared/components/NoResult'
 
 interface Props {
   characters: Character[]

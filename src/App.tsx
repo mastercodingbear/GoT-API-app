@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
-import CharacterTable from './pages/CharacterTable'
-import HouseDetail from './pages/HouseDetail'
-import PageNotFound from './pages/PageNotFound'
+import CharacterTable from './CharacterTable'
+import HouseDetail from './HouseDetail'
+import PageNotFound from './PageNotFound'
 
 const App: React.FC = () => {
   return (

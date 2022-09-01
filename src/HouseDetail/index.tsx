@@ -1,29 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import Button from '../components/Button'
-import Loading from '../components/Loading'
-import { House } from '../state/types'
+import Button from '../Shared/components/Button'
+import Loading from '../Shared/components/Loading'
+import useHouseDetail from './hooks/useHouseDetail'
 
 const HouseDetail: React.FC = () => {
   const params = useParams()
   const navigate = useNavigate()
-  const houseId = params.houseId ?? '1'
+  const houseId: number = parseInt(params.houseId ?? '1')
 
-  const [houseDetail, setHouseDetail] = useState<House>()
-  const [isLoading, setLoading] = useState<boolean>(true)
-
-  const getHouseDetails = async (): Promise<void> => {
-    setLoading(true)
-    const data = await fetch(
-      `https://anapioficeandfire.com/api/houses/${houseId}`
-    ).then(async (res) => await res.json())
-    setLoading(false)
-    setHouseDetail(data)
-  }
-
-  useEffect(() => {
-    void getHouseDetails()
-  }, [])
+  const { houseDetail, isLoading } = useHouseDetail(houseId)
 
   return (
     <React.Fragment>
